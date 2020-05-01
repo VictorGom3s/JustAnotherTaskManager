@@ -1,0 +1,40 @@
+@import "../../public/colors.scss";
+
+.taskInput {
+  margin: 30px auto;
+  height: 50px;
+  max-width: 700px;
+  display: flex;
+  justify-content: center;
+  padding: 0 10px;
+  input {
+    margin-right: 10px;
+    min-width: 70%;
+    transition: 0.1s;
+    border: 1.5px solid $secondaryColor;
+    border-radius: 5px;
+    padding: 10px;
+    &:focus {
+      color: $auxColor;
+      border: 2px solid $auxColor;
+      cursor: pointer;
+    }
+  }
+  button {
+    margin-left: 10px;
+    background: none;
+    padding: 0 20px;
+    border: 2px solid $secondaryColor;
+    border-radius: 5px;
+    color: $secondaryColor;
+    font-size: 2rem;
+    vertical-align: center;
+    transition: 0.1s;
+    user-select: none;
+    &:hover {
+      color: $auxColor;
+      border-color: $auxColor;
+      cursor: pointer;
+    }
+  }
+}

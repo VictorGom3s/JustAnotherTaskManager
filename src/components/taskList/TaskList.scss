@@ -1,0 +1,47 @@
+@import "../../public/colors.scss";
+
+.task-list {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: flex-start;
+  ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    li {
+      margin: 30px 0;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .task-text {
+    white-space: pre-wrap;
+    white-space: pre-line;
+    word-wrap: break-word;
+    overflow-x: hidden;
+    padding: 0 30px;
+    flex-grow: 1;
+    font-size: 1.2rem;
+    color: #2c2c2c;
+  }
+}
+
+.btn-delete {
+  background: none;
+  border-radius: 5px;
+  border: 1px solid $dangerColor;
+  padding: 10px 20px;
+  color: $dangerColor;
+  transition: 0.1s;
+  user-select: none;
+  &:hover {
+    border-color: $dangerColorHover;
+    color: $dangerColorHover;
+    cursor: pointer;
+  }
+}

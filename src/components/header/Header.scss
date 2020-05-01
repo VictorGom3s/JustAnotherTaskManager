@@ -1,0 +1,39 @@
+@import "../../public/colors.scss";
+
+header {
+  background-color: $backgroundColor;
+  min-height: 60px;
+  // max-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  h1 {
+    color: whitesmoke;
+    margin: 0 30px;
+    transition: 0.3s;
+    text-transform: uppercase;
+    user-select: none;
+    &:hover {
+      color: $mainColor;
+      cursor: pointer;
+    }
+  }
+  button {
+    margin: 0 30px;
+    background: none;
+    border: 3px solid whitesmoke;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: whitesmoke;
+    font-weight: bold;
+    text-transform: uppercase;
+    user-select: none;
+    transition: 0.2s;
+    &:hover {
+      color: $mainColor;
+      border-color: $mainColor;
+      cursor: pointer;
+    }
+  }
+}

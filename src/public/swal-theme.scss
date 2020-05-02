@@ -1,0 +1,34 @@
+@import "./colors.scss";
+
+.swal-button {
+  background: none;
+  border: 1px solid $secondaryColor;
+  color: $secondaryColor;
+  transition: 0.2s;
+  &:hover {
+    background-color: $backgroundColor !important;
+    border-color: $backgroundColor !important;
+
+    color: white;
+  }
+}
+
+.swal-button--danger {
+  background: none;
+  border: 1px solid $dangerColor;
+  color: $dangerColor;
+  transition: 0.2s;
+  &:hover {
+    background-color: $dangerColorHover !important;
+    border-color: $dangerColorHover !important;
+    color: white;
+  }
+}
+
+.swal-content__input {
+  border-color: $secondaryColor;
+  transition: 0.2s;
+  &:focus {
+    border-color: $backgroundColor;
+  }
+}

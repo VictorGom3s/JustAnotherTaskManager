@@ -3,6 +3,25 @@ import "./TaskList.scss";
 import swal from "sweetalert";
 
 const TaskList = ({ data, onTaskDelete, onTaskComplete, onTaskEdit }) => {
+  const editTaskDialog = (task) => {
+    swal({
+      title: "Edit Task",
+      content: {
+        element: "input",
+        attributes: {
+          type: "text",
+          value: task.title,
+          placeholder: "Insert the updated task",
+        },
+      },
+      button: "Save",
+    }).then((value) => {
+      if (value) {
+        onTaskEdit(task.id, value);
+      }
+    });
+  };
+
   return (
     <div className="task-list">
       <ul>
@@ -16,29 +35,19 @@ const TaskList = ({ data, onTaskDelete, onTaskComplete, onTaskEdit }) => {
             ></input>
             <p
               title="Task title. Double click to edit."
-              onDoubleClick={() => {
-                swal("Edit your task:", {
-                  content: {
-                    element: "input",
-                    attributes: {
-                      type: "text",
-                      value: task.title,
-                      placeholder: "Insert the updated task",
-                    },
-                  },
-                }).then((value) => {
-                  if (value) {
-                    onTaskEdit(task.id, value);
-                  }
-                });
-              }}
+              onDoubleClick={editTaskDialog.bind(this, task)}
               className="task-text"
             >
               {task.title}{" "}
             </p>
-            <button>Edit</button>
             <button
-              className="btn-delete"
+              className="btn btn-edit"
+              onClick={editTaskDialog.bind(this, task)}
+            >
+              Edit
+            </button>
+            <button
+              className="btn btn-delete"
               title="Delete this task"
               type="button"
               onClick={() => onTaskDelete(task.id)}

@@ -31,17 +31,34 @@
   }
 }
 
-.btn-delete {
+.btn {
+  margin: 0 5px;
   background: none;
   border-radius: 5px;
-  border: 1px solid $dangerColor;
   padding: 10px 20px;
-  color: $dangerColor;
-  transition: 0.1s;
+  transition: 0.2s;
   user-select: none;
   &:hover {
-    border-color: $dangerColorHover;
-    color: $dangerColorHover;
     cursor: pointer;
+  }
+}
+
+.btn-edit {
+  border: 1px solid $secondaryColor;
+  color: $secondaryColor;
+  &:hover {
+    background-color: $mainColor;
+    border-color: $mainColor;
+    color: white;
+  }
+}
+
+.btn-delete {
+  border: 1px solid $dangerColor;
+  color: $dangerColor;
+  &:hover {
+    background-color: $dangerColorHover;
+    border-color: $dangerColorHover;
+    color: white;
   }
 }

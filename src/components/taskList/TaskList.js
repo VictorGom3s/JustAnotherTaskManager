@@ -36,6 +36,7 @@ const TaskList = ({ data, onTaskDelete, onTaskComplete, onTaskEdit }) => {
             >
               {task.title}{" "}
             </p>
+            <button>Edit</button>
             <button
               className="btn-delete"
               title="Delete this task"

@@ -2,7 +2,7 @@
 
 > A simple task manager that stores data in the browser's IndexedDB. Made using React and Dexie.js.
 
-### Access the app running live: [Just Another Task Manager](https://dashboard.heroku.com/apps/justanothertaskmanager)
+### Access the app running live: [Just Another Task Manager](https://justanothertaskmanager.herokuapp.com/)
 
 ---
 

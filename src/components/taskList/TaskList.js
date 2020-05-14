@@ -3,8 +3,8 @@ import "./TaskList.scss";
 import swal from "sweetalert";
 
 const TaskList = ({ data, onTaskDelete, onTaskComplete, onTaskEdit }) => {
-  const editTaskDialog = (task) => {
-    swal({
+  const editTaskDialog = async (task) => {
+    const value = await swal({
       title: "Edit Task",
       content: {
         element: "input",
@@ -15,11 +15,11 @@ const TaskList = ({ data, onTaskDelete, onTaskComplete, onTaskEdit }) => {
         },
       },
       button: "Save",
-    }).then((value) => {
-      if (value) {
-        onTaskEdit(task.id, value);
-      }
     });
+
+    if (value) {
+      onTaskEdit(task.id, value);
+    }
   };
 
   return (

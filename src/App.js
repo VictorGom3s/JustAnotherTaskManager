@@ -4,11 +4,14 @@ import swal from "sweetalert";
 import Header from "./components/header/Header";
 import TaskInput from "./components/taskInput/TaskInput";
 import TaskList from "./components/taskList/TaskList";
+import Pomodoro from "./components/pomodoro/Pomodoro";
 
 import db from "./config/db";
 
 function App() {
   const [allTasks, setAllTasks] = useState([]);
+  const [minutes, setMinutes] = useState(25);
+  const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
     db.task.toArray().then((result) => {
@@ -51,9 +54,23 @@ function App() {
     });
   };
 
+  const handleMinutesChange = (value) => {
+    setMinutes(value);
+  };
+
+  const handleSecondsChange = (value) => {
+    setSeconds(value);
+  };
+
   return (
     <div>
       <Header></Header>
+      <Pomodoro
+        minutes={minutes}
+        seconds={seconds}
+        onMinutesPassed={handleMinutesChange}
+        onSecondsPassed={handleSecondsChange}
+      />
       <TaskInput onTaskInputChange={handleTaskInputSubmit} />
       <TaskList
         data={allTasks}

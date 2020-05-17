@@ -10,8 +10,8 @@ import db from "./config/db";
 
 function App() {
   const [allTasks, setAllTasks] = useState([]);
-  const [minutes, setMinutes] = useState(25);
-  const [seconds, setSeconds] = useState(0);
+  const [minutes, setMinutes] = useState(2);
+  const [seconds, setSeconds] = useState(5);
 
   useEffect(() => {
     db.task.toArray().then((result) => {

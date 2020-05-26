@@ -10,8 +10,6 @@ import db from "./config/db";
 
 function App() {
   const [allTasks, setAllTasks] = useState([]);
-  const [minutes, setMinutes] = useState(2);
-  const [seconds, setSeconds] = useState(5);
 
   useEffect(() => {
     db.task.toArray().then((result) => {
@@ -54,23 +52,10 @@ function App() {
     });
   };
 
-  const handleMinutesChange = (value) => {
-    setMinutes(value);
-  };
-
-  const handleSecondsChange = (value) => {
-    setSeconds(value);
-  };
-
   return (
     <div>
       <Header></Header>
-      <Pomodoro
-        minutes={minutes}
-        seconds={seconds}
-        onMinutesPassed={handleMinutesChange}
-        onSecondsPassed={handleSecondsChange}
-      />
+      <Pomodoro />
       <TaskInput onTaskInputChange={handleTaskInputSubmit} />
       <TaskList
         data={allTasks}

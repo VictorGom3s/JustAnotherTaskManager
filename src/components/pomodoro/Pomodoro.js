@@ -1,40 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Clock from "./Clock";
 import Controls from "./Controls";
 
 import "./Pomodoro.scss";
 import swal from "sweetalert";
 
-const Pomodoro = ({ minutes, seconds, onMinutesPassed, onSecondsPassed }) => {
-  const [intervalID, setIntervalID] = useState("");
-
-  function timer() {
-    if (seconds > 0) {
-      onSecondsPassed(--seconds);
-    } else if (seconds === 0 && minutes > 0) {
-      seconds = 59;
-      onSecondsPassed(seconds);
-      onMinutesPassed(--minutes);
-    } else if (seconds === 0 && minutes === 0) {
-      clearInterval(intervalID);
-      swal("Good job", "Time to take a walk!", "warning");
-    }
-  }
+const Pomodoro = () => {
+  const [intervalID, setIntervalID] = useState(0);
+  let [minutes, setMinutes] = useState(25);
+  let [seconds, setSeconds] = useState(0);
+  const [running, setRunning] = useState(false);
 
   function startTimer() {
-    const id = setInterval(timer, 1000);
-    setIntervalID(id);
-    console.log("Start timer", intervalID);
+    setRunning(true);
   }
 
   function pauseTimer() {
-    console.log("pause timer", intervalID);
     clearInterval(intervalID);
+    setRunning(false);
   }
 
   function resetTimer() {
-    console.log("reset timer", intervalID);
     clearInterval(intervalID);
+    setMinutes(25);
+    setSeconds(0);
+    setRunning(false);
+  }
+
+  useEffect(() => {
+    if (running) {
+      const id = setInterval(timer, 1000);
+      setIntervalID(id);
+    } else if (minutes === 0 && seconds === 0) {
+      swal("Good job", "Time to take a walk!", "warning");
+      resetTimer();
+    }
+  }, [running]);
+
+  async function timer() {
+    if (seconds > 0) setSeconds(--seconds);
+    else if (seconds === 0 && minutes > 0) {
+      seconds = 59;
+      setSeconds(59);
+      setMinutes(--minutes);
+    } else if (seconds === 0 && minutes === 0) {
+      setRunning(false);
+    }
   }
 
   return (

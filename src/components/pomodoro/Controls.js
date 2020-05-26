@@ -3,13 +3,13 @@ import React from "react";
 const Controls = ({ startTimer, pauseTimer, resetTimer }) => {
   return (
     <div>
-      <button onClick={() => startTimer()} className="btn btn-start">
+      <button onClick={startTimer} className="btn btn-start">
         Start
       </button>
-      <button onClick={() => pauseTimer()} className="btn btn-pause">
+      <button onClick={pauseTimer} className="btn btn-pause">
         Pause
       </button>
-      <button onClick={() => resetTimer()} className="btn btn-reset">
+      <button onClick={resetTimer} className="btn btn-reset">
         Reset
       </button>
     </div>

@@ -7,8 +7,8 @@ import swal from "sweetalert";
 
 const Pomodoro = () => {
   const [intervalID, setIntervalID] = useState(0);
-  let [minutes, setMinutes] = useState(0);
-  let [seconds, setSeconds] = useState(5);
+  let [minutes, setMinutes] = useState(25);
+  let [seconds, setSeconds] = useState(0);
   const [running, setRunning] = useState(false);
 
   function startTimer() {
@@ -26,6 +26,13 @@ const Pomodoro = () => {
     setMinutes(25);
     setSeconds(0);
     setRunning(false);
+  }
+
+  function incrementMinutes() {
+    setMinutes(minutes + 1);
+  }
+  function decrementMinutes() {
+    setMinutes(minutes - 1);
   }
 
   const getNotificationPermission = async () => {
@@ -69,7 +76,13 @@ const Pomodoro = () => {
 
   return (
     <div className="pomodoro">
-      <Clock minutes={minutes} seconds={seconds} />
+      <Clock
+        minutes={minutes}
+        seconds={seconds}
+        incrementMinutes={incrementMinutes}
+        decrementMinutes={decrementMinutes}
+        running={running}
+      />
       <Controls
         startTimer={startTimer}
         pauseTimer={pauseTimer}

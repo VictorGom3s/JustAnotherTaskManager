@@ -1,6 +1,12 @@
 import React from "react";
 
-const Clock = ({ minutes, seconds }) => {
+const Clock = ({
+  minutes,
+  seconds,
+  incrementMinutes,
+  decrementMinutes,
+  running,
+}) => {
   const formatSeconds = () => {
     return seconds < 10 ? `0${seconds}` : seconds;
   };
@@ -10,9 +16,23 @@ const Clock = ({ minutes, seconds }) => {
   };
 
   return (
-    <span className="clock">
+    <div className="clock">
+      <button
+        className="btnMedia"
+        onClick={decrementMinutes}
+        disabled={running}
+      >
+        -
+      </button>
       {formatMinutes()}:{formatSeconds()}
-    </span>
+      <button
+        className="btnMedia"
+        onClick={incrementMinutes}
+        disabled={running}
+      >
+        +
+      </button>
+    </div>
   );
 };
 

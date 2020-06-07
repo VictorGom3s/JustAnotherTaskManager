@@ -17,10 +17,10 @@ There's nothing much yet:
 
 ## To Do
 
+- [x] Notifications
 - [ ] Pomodoro Timer
 - [ ] Task due time
 - [ ] Task priority
-- [ ] Notifications
 - [ ] Keyboard shortcuts
 - [ ] Export Tasks
 - [ ] Group tasks in categories

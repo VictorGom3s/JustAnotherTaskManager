@@ -1,77 +1,119 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useReducer } from "react";
 import Clock from "./Clock";
 import Controls from "./Controls";
 
 import "./Pomodoro.scss";
 import swal from "sweetalert";
 
+const getNotificationPermission = () => {
+  if (!("Notification" in window)) {
+    alert("This browser does not support desktop notification.");
+    return false;
+  }
+
+  if (Notification.permission === "default") {
+    Notification.requestPermission();
+  }
+};
+
+function notify(msg) {
+  if (Notification.permission === "granted") {
+    new Notification("Just Another Task Manager", { body: msg });
+  }
+}
+
 const Pomodoro = () => {
   const [intervalID, setIntervalID] = useState(0);
   let [minutes, setMinutes] = useState(25);
   let [seconds, setSeconds] = useState(0);
-  const [running, setRunning] = useState(false);
 
-  function startTimer() {
-    setRunning(true);
-    getNotificationPermission();
-  }
-
-  function pauseTimer() {
-    clearInterval(intervalID);
-    setRunning(false);
-  }
-
-  function resetTimer() {
-    clearInterval(intervalID);
-    setMinutes(25);
-    setSeconds(0);
-    setRunning(false);
-  }
-
-  function incrementMinutes() {
-    setMinutes(minutes + 1);
-  }
-  function decrementMinutes() {
-    setMinutes(minutes - 1);
-  }
-
-  const getNotificationPermission = async () => {
-    if (!("Notification" in window)) {
-      alert("This browser does not support desktop notification.");
-      return false;
-    }
-
-    if (Notification.permission === "default") {
-      Notification.requestPermission();
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "SET_WORKING":
+        setMinutes(25);
+        setSeconds(0);
+        return {
+          ...state,
+          isRunning: false,
+          isRelaxing: false,
+          isWorking: true,
+        };
+      case "SET_RELAXING":
+        setMinutes(5);
+        setSeconds(0);
+        return {
+          ...state,
+          isRunning: false,
+          isRelaxing: true,
+          isWorking: false,
+        };
+      case "START_POMODORO":
+        return {
+          ...state,
+          isRunning: true,
+        };
+      case "STOP_POMODORO":
+        return {
+          ...state,
+          isRunning: false,
+        };
+      default:
+        throw new Error("Unknown action type");
     }
   };
 
-  async function notify(msg) {
-    if (Notification.permission === "granted") {
-      new Notification("Just Another Task Manager", { body: msg });
-    }
-  }
+  const [pomodoro, dispatchPomodoro] = useReducer(reducer, {
+    isRelaxing: false,
+    isWorking: true,
+    isRunning: false,
+  });
 
   useEffect(() => {
-    if (running) {
+    if (pomodoro.isRunning) {
       const id = setInterval(timer, 1000);
       setIntervalID(id);
-    } else if (minutes === 0 && seconds === 0) {
-      notify("Time's ended");
-      swal("Good job", "Time to take a walk!", "warning");
-      resetTimer();
+    } else {
+      clearInterval(intervalID);
     }
-  }, [running]);
+  }, [pomodoro.isRunning]);
 
-  async function timer() {
-    if (seconds > 0) setSeconds(--seconds);
-    else if (seconds === 0 && minutes > 0) {
+  const timer = () => {
+    if (minutes === 0 && seconds === 0) endTimer();
+    else if (seconds > 0) {
+      setSeconds(--seconds);
+    } else if (seconds === 0 && minutes > 0) {
       seconds = 59;
-      setSeconds(59);
+      setSeconds(seconds);
       setMinutes(--minutes);
-    } else if (seconds === 0 && minutes === 0) {
-      setRunning(false);
     }
+  };
+
+  const startTimer = () => {
+    getNotificationPermission();
+    dispatchPomodoro({ type: "START_POMODORO" });
+  };
+
+  const pauseTimer = () => {
+    dispatchPomodoro({ type: "STOP_POMODORO" });
+  };
+  const resetTimer = () => {
+    if (pomodoro.isWorking) dispatchPomodoro({ type: "SET_WORKING" });
+    else dispatchPomodoro({ type: "SET_RELAXING" });
+  };
+
+  const endTimer = () => {
+    swal("Finish", "Good Job!", "success");
+    notify("Time finished!");
+    dispatchPomodoro({ type: "STOP_POMODORO" });
+    if (pomodoro.isWorking) dispatchPomodoro({ type: "SET_RELAXING" });
+    else dispatchPomodoro({ type: "SET_WORKING" });
+  };
+
+  function incrementMinutes() {
+    if (minutes < 60) setMinutes(minutes + 1);
+  }
+  function decrementMinutes() {
+    if (minutes > 0) setMinutes(minutes - 1);
   }
 
   return (
@@ -81,7 +123,7 @@ const Pomodoro = () => {
         seconds={seconds}
         incrementMinutes={incrementMinutes}
         decrementMinutes={decrementMinutes}
-        running={running}
+        running={pomodoro.isRunning}
       />
       <Controls
         startTimer={startTimer}

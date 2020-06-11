@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import swal from "sweetalert";
 
 import Header from "./components/header/Header";
@@ -11,12 +11,15 @@ import db from "./config/db";
 function App() {
   const [allTasks, setAllTasks] = useState([]);
 
-  useEffect(() => {
+  const fetchTasks = useCallback(() => {
     db.task.toArray().then((result) => {
       setAllTasks(result);
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [db]);
+  }, []);
+
+  useEffect(() => {
+    fetchTasks();
+  }, [fetchTasks]);
 
   const handleTaskInputSubmit = (task) => {
     db.task.add({ title: task, description: "Not Yet", isCompleted: false });

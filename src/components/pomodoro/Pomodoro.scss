@@ -27,6 +27,10 @@
       border: 2px solid $auxColor;
       color: $auxColor;
     }
+    &:disabled {
+      border: 2px solid lightGray;
+      color: lightGray;
+    }
   }
   .clock {
     display: flex;

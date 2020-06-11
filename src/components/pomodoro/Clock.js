@@ -20,7 +20,7 @@ const Clock = ({
       <button
         className="btnMedia"
         onClick={decrementMinutes}
-        disabled={running}
+        disabled={running || minutes <= 0}
       >
         -
       </button>
@@ -28,7 +28,7 @@ const Clock = ({
       <button
         className="btnMedia"
         onClick={incrementMinutes}
-        disabled={running}
+        disabled={running || minutes >= 60}
       >
         +
       </button>

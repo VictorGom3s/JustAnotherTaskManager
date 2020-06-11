@@ -22,6 +22,18 @@ function notify(msg) {
   }
 }
 
+function PlayAudio() {
+  const audioContext = new AudioContext();
+
+  const audioElement = document.querySelector("audio");
+
+  const track = audioContext.createMediaElementSource(audioElement);
+
+  track.connect(audioContext.destination);
+
+  audioElement.play();
+}
+
 const Pomodoro = () => {
   const [intervalID, setIntervalID] = useState(0);
   let [minutes, setMinutes] = useState(25);
@@ -103,6 +115,7 @@ const Pomodoro = () => {
 
   const endTimer = () => {
     swal("Finish", "Good Job!", "success");
+    PlayAudio();
     notify("Time finished!");
     dispatchPomodoro({ type: "STOP_POMODORO" });
     if (pomodoro.isWorking) dispatchPomodoro({ type: "SET_RELAXING" });
@@ -130,6 +143,7 @@ const Pomodoro = () => {
         pauseTimer={pauseTimer}
         resetTimer={resetTimer}
       />
+      <audio src="../../../SYMBOL_WIN_REVEAL_01-Sounds_of_China.mp3"></audio>
     </div>
   );
 };

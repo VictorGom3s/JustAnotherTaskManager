@@ -18,7 +18,7 @@ There's nothing much yet:
 ## To Do
 
 - [x] Notifications
-- [ ] Pomodoro Timer
+- [x] Pomodoro Timer
 - [ ] Task due time
 - [ ] Task priority
 - [ ] Keyboard shortcuts

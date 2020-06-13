@@ -20,8 +20,9 @@ const TaskInput = ({ onTaskInputChange }) => {
     if (e.keyCode === 13 && e.shiftKey === false && task) {
       if (task.includes("@")) {
         var [newTask, priority] = splitTaskAndPriority(task);
+        setTask(newTask);
       }
-      onTaskInputChange(newTask, priority);
+      onTaskInputChange(task, priority);
       setTask("");
     }
   };

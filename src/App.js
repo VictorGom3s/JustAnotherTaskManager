@@ -21,8 +21,13 @@ function App() {
     fetchTasks();
   }, [fetchTasks]);
 
-  const handleTaskInputSubmit = (task) => {
-    db.task.add({ title: task, description: "Not Yet", isCompleted: false });
+  const handleTaskInputSubmit = (task, priority) => {
+    db.task.add({
+      title: task,
+      description: "Not Yet",
+      priority: priority || null,
+      isCompleted: false,
+    });
     db.task.toArray().then((result) => {
       setAllTasks(result);
     });

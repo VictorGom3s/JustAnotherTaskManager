@@ -40,6 +40,15 @@ const TaskList = ({ data, onTaskDelete, onTaskComplete, onTaskEdit }) => {
             >
               {task.title}{" "}
             </p>
+
+            {task.priority ? (
+              <span className={`label priority-${task.priority}`}>
+                <small>{task.priority}</small>
+              </span>
+            ) : (
+              ""
+            )}
+
             <button
               className="btn btn-edit"
               onClick={editTaskDialog.bind(this, task)}

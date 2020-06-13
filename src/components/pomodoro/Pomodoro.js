@@ -32,8 +32,8 @@ function PlayAudio() {
 
 const Pomodoro = () => {
   const [intervalID, setIntervalID] = useState(0);
-  let [minutes, setMinutes] = useState(0);
-  let [seconds, setSeconds] = useState(2);
+  let [minutes, setMinutes] = useState(25);
+  let [seconds, setSeconds] = useState(0);
 
   const reducer = (state, action) => {
     switch (action.type) {

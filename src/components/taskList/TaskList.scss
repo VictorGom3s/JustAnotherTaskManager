@@ -29,6 +29,38 @@
     font-size: 1.2rem;
     color: #2c2c2c;
   }
+
+  .label {
+    padding: 1px 10px;
+    color: #2c2c2c;
+    font-weight: bold;
+    margin: 0 10px;
+  }
+
+  .priority-today {
+    border: 1px solid #ae81ff;
+    padding: 1px 10px;
+    background-color: #ae81ff;
+    color: white;
+  }
+  .priority-low {
+    border: 1px solid #e5d145;
+    padding: 1px 10px;
+    background-color: #e5d145;
+    color: white;
+  }
+  .priority-high {
+    border: 1px solid #e59f45;
+    padding: 1px 10px;
+    background-color: #e59f45;
+    color: white;
+  }
+  .priority-critical {
+    border: 1px solid #eb542f;
+    padding: 1px 10px;
+    background-color: #eb542f;
+    color: white;
+  }
 }
 
 @media (max-width: 600px) {

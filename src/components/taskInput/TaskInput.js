@@ -1,12 +1,27 @@
 import React, { useState } from "react";
 import "./TaskInput.scss";
 
+const splitTaskAndPriority = (task) => {
+  let start = task.indexOf("@");
+  let end = task.indexOf(" ", start);
+
+  if (end === -1) end = task.length;
+
+  const priority = task.slice(start, end);
+  const newTask = task.replace(priority, "");
+
+  return [newTask, priority.replace("@", "")];
+};
+
 const TaskInput = ({ onTaskInputChange }) => {
-  const [task, setTask] = useState("");
+  const [task, setTask] = useState("teste @low");
 
   const handleEnterPress = (e) => {
     if (e.keyCode === 13 && e.shiftKey === false && task) {
-      onTaskInputChange(task);
+      if (task.includes("@")) {
+        var [newTask, priority] = splitTaskAndPriority(task);
+      }
+      onTaskInputChange(newTask, priority);
       setTask("");
     }
   };

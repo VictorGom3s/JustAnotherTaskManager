@@ -43,4 +43,29 @@
       font-size: 2.25rem;
     }
   }
+
+  @media (max-width: 600px) {
+    .clock {
+      margin: 10px 0;
+      button {
+        margin: 0 20px;
+      }
+    }
+  }
+  .pomodoro-link {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: $mainColor;
+    align-self: flex-end;
+    margin: 0 20px;
+    padding: 1px 10px;
+    background-color: $auxColor;
+    border: 1px solid $secondaryColor;
+    border-radius: 100%;
+    transition: 0.2s;
+    &:hover {
+      background-color: $secondaryColor;
+    }
+  }
 }

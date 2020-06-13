@@ -24,20 +24,16 @@ function notify(msg) {
 
 function PlayAudio() {
   const audioContext = new AudioContext();
-
   const audioElement = document.querySelector("audio");
-
   const track = audioContext.createMediaElementSource(audioElement);
-
   track.connect(audioContext.destination);
-
   audioElement.play();
 }
 
 const Pomodoro = () => {
   const [intervalID, setIntervalID] = useState(0);
-  let [minutes, setMinutes] = useState(25);
-  let [seconds, setSeconds] = useState(0);
+  let [minutes, setMinutes] = useState(0);
+  let [seconds, setSeconds] = useState(2);
 
   const reducer = (state, action) => {
     switch (action.type) {
@@ -131,6 +127,14 @@ const Pomodoro = () => {
 
   return (
     <div className="pomodoro">
+      <a
+        title="What is the pomodoro technique?"
+        className="pomodoro-link"
+        href="https://en.wikipedia.org/wiki/Pomodoro_Technique"
+        target="_blank"
+      >
+        <small>?</small>
+      </a>
       <Clock
         minutes={minutes}
         seconds={seconds}

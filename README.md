@@ -1,6 +1,6 @@
 # 🖊️ Just Another Task Manager 📓
 
-> A simple task manager that stores data in the browser's IndexedDB. Made using React and Dexie.js.
+> A simple task manager and pomodoro timer that stores data in the browser's IndexedDB. Made using React and Dexie.js.
 
 ### Access the app running live: [Just Another Task Manager](https://justanothertaskmanager.herokuapp.com/)
 

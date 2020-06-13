@@ -14,7 +14,7 @@ const splitTaskAndPriority = (task) => {
 };
 
 const TaskInput = ({ onTaskInputChange }) => {
-  const [task, setTask] = useState("teste @low");
+  const [task, setTask] = useState("");
 
   const handleEnterPress = (e) => {
     if (e.keyCode === 13 && e.shiftKey === false && task) {

@@ -20,7 +20,7 @@ There's nothing much yet:
 - [x] Notifications
 - [x] Pomodoro Timer
 - [ ] Task due time
-- [ ] Task priority
+- [x] Task priority
 - [ ] Keyboard shortcuts
 - [ ] Export Tasks
 - [ ] Group tasks in categories

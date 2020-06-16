@@ -13,7 +13,7 @@
   }
   .btnMedia {
     background: none;
-    border: 2px solid $secondaryColor;
+    border: 2px solid $mainColor;
     color: $secondaryColor;
     border-radius: 100%;
     width: 54px;
@@ -24,12 +24,12 @@
     align-items: center;
     transition: 0.2s;
     &:hover {
-      border: 2px solid $auxColor;
-      color: $auxColor;
+      border: 2px solid $secondaryColor;
+      color: $secondaryColor;
     }
     &:disabled {
-      border: 2px solid lightGray;
-      color: lightGray;
+      border: 2px solid $auxColor;
+      color: $auxColor;
     }
   }
   .clock {
@@ -38,6 +38,7 @@
     align-items: center;
     margin: 10px auto;
     font-size: 4rem;
+    color: $mainColor;
     button {
       margin: 0 40px;
       font-size: 2.25rem;
@@ -61,11 +62,11 @@
     margin: 0 20px;
     padding: 1px 10px;
     background-color: $auxColor;
-    border: 1px solid $secondaryColor;
+    border: 1px solid $auxColor;
     border-radius: 100%;
     transition: 0.2s;
     &:hover {
-      background-color: $secondaryColor;
+      border-color: $secondaryColor;
     }
   }
 }

@@ -8,7 +8,7 @@ const splitTaskAndPriority = (task) => {
   if (end === -1) end = task.length;
 
   const priority = task.slice(start, end);
-  const newTask = task.replace(priority, "");
+  const newTask = task.replace(priority, "").replace("  ", " ");
 
   return [newTask, priority.replace("@", "")];
 };
@@ -19,11 +19,14 @@ const TaskInput = ({ onTaskInputChange }) => {
   const handleEnterPress = (e) => {
     if (e.keyCode === 13 && e.shiftKey === false && task) {
       if (task.includes("@")) {
-        var [newTask, priority] = splitTaskAndPriority(task);
+        const [newTask, priority] = splitTaskAndPriority(task);
         setTask(newTask);
+        onTaskInputChange(newTask, priority);
+        setTask("");
+      } else {
+        onTaskInputChange(task, null);
+        setTask("");
       }
-      onTaskInputChange(task, priority);
-      setTask("");
     }
   };
 
@@ -38,7 +41,7 @@ const TaskInput = ({ onTaskInputChange }) => {
         placeholder="What do you need to do today?"
         name="taskTitle"
       ></input>
-      <button
+      {/* <button
         type="button"
         onClick={() => {
           if (task) {
@@ -48,7 +51,7 @@ const TaskInput = ({ onTaskInputChange }) => {
         }}
       >
         +
-      </button>
+      </button> */}
     </div>
   );
 };

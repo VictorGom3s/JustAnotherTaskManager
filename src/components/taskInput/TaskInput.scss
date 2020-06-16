@@ -3,20 +3,21 @@
 .taskInput {
   margin: 30px auto;
   height: 50px;
-  max-width: 700px;
+  max-width: 600px;
   display: flex;
   justify-content: center;
   padding: 0 10px;
   input {
-    margin-right: 10px;
-    min-width: 70%;
+    min-width: 100%;
     transition: 0.1s;
     border: 1.5px solid $secondaryColor;
+    background-color: $backgroundColor;
+    color: $mainColor;
     border-radius: 5px;
     padding: 10px;
     &:focus {
-      color: $auxColor;
-      border: 2px solid $auxColor;
+      color: $mainColor;
+      border: 2px solid $mainColor;
       cursor: pointer;
     }
   }

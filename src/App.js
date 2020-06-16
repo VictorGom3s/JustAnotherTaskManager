@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
 import swal from "sweetalert";
 
-import Header from "./components/header/Header";
 import TaskInput from "./components/taskInput/TaskInput";
 import TaskList from "./components/taskList/TaskList";
 import Pomodoro from "./components/pomodoro/Pomodoro";
+import Footer from "./components/footer/Footer";
 
 import db from "./config/db";
 
@@ -61,8 +61,7 @@ function App() {
   };
 
   return (
-    <div>
-      <Header></Header>
+    <>
       <Pomodoro />
       <TaskInput onTaskInputChange={handleTaskInputSubmit} />
       <TaskList
@@ -71,7 +70,8 @@ function App() {
         onTaskComplete={handleTaskComplete}
         onTaskEdit={handleTaskEdit}
       />
-    </div>
+      {/* <Footer></Footer> */}
+    </>
   );
 }
 

@@ -1,0 +1,27 @@
+@import "../../public/colors.scss";
+
+footer {
+  display: flex;
+  width: 100%;
+  border-top: 1px solid $mainColor;
+  margin-top: 30px;
+  margin-bottom: -500px;
+  // position: absolute;
+  // bottom: 0;
+  height: 50px;
+  font-size: 0.9rem;
+  color: white;
+  justify-content: flex-end;
+  align-items: center;
+  p {
+    margin: 0 30px;
+    a {
+      color: $mainColor;
+      text-decoration: none;
+      &:hover {
+        color: $secondaryColor;
+        text-decoration: underline;
+      }
+    }
+  }
+}

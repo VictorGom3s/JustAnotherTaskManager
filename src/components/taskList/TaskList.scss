@@ -6,7 +6,9 @@
   padding: 0 20px;
   display: flex;
   justify-content: flex-start;
+
   ul {
+    flex: 1;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -16,6 +18,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      color: $mainColor;
     }
   }
 
@@ -27,12 +30,12 @@
     padding: 0 30px;
     flex-grow: 1;
     font-size: 1.2rem;
-    color: #2c2c2c;
+    color: $mainColor;
   }
 
   .label {
     padding: 1px 10px;
-    color: #2c2c2c;
+    color: $secondaryColor;
     font-weight: bold;
     margin: 0 10px;
   }
@@ -47,7 +50,7 @@
     border: 1px solid #e5d145;
     padding: 1px 10px;
     background-color: #e5d145;
-    color: white;
+    color: black;
   }
   .priority-high {
     border: 1px solid #e59f45;
@@ -103,4 +106,8 @@
     border-color: $dangerColorHover;
     color: white;
   }
+}
+
+input[type="checkbox"] {
+  background-color: red;
 }

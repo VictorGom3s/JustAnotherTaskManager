@@ -8,13 +8,13 @@ const Controls = ({ startTimer, pauseTimer, resetTimer }) => {
   return (
     <div className="controls">
       <button onClick={startTimer} className="btn-start btnMedia">
-        <Play width={36} height={36} fill={"#af8baf"} />
+        <Play width={36} height={36} fill={"#0B5D1E"} />
       </button>
       <button onClick={pauseTimer} className="btnMedia">
-        <Pause width={28} height={28} fill={"#af8baf"} />
+        <Pause width={28} height={28} fill={"#0B5D1E"} />
       </button>
       <button onClick={resetTimer} className="btnMedia">
-        <Stop width={36} height={36} fill={"#af8baf"} />
+        <Stop width={36} height={36} fill={"#0B5D1E"} />
       </button>
     </div>
   );

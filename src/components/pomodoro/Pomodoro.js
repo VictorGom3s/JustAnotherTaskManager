@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useReducer } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import Clock from "./Clock";
 import Controls from "./Controls";
 

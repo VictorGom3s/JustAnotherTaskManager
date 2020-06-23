@@ -32,6 +32,7 @@ const TaskInput = ({ onTaskInputChange }) => {
 
   return (
     <div className="taskInput">
+      <h2>Hello There!</h2>
       <input
         type="input"
         autoFocus
@@ -41,17 +42,7 @@ const TaskInput = ({ onTaskInputChange }) => {
         placeholder="What do you need to do today?"
         name="taskTitle"
       ></input>
-      {/* <button
-        type="button"
-        onClick={() => {
-          if (task) {
-            onTaskInputChange(task);
-            setTask("");
-          }
-        }}
-      >
-        +
-      </button> */}
+      <hr />
     </div>
   );
 };

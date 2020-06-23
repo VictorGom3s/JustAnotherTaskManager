@@ -1,12 +1,22 @@
 @import "../../public/colors.scss";
 
 .taskInput {
-  margin: 30px auto;
-  height: 50px;
+  margin: 10px auto;
   max-width: 600px;
-  display: flex;
-  justify-content: center;
   padding: 0 10px;
+  h2 {
+    margin-top: 40px;
+    margin-bottom: 15px;
+    color: $mainColor;
+  }
+  hr {
+    background-color: $auxColor;
+    margin: 20px auto;
+    max-width: 200px;
+    height: 2px;
+    border: none;
+    border-radius: 5px;
+  }
   input {
     min-width: 100%;
     transition: 0.1s;

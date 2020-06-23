@@ -60,6 +60,23 @@ function App() {
     });
   };
 
+  const handleDeleteAll = () => {
+    swal(
+      "Are you sure?",
+      "Do you really want to delete all tasks?",
+      "warning",
+      {
+        dangerMode: true,
+        buttons: { cancel: "I changed my mind", confirm: "Yes, I want" },
+      }
+    ).then((res) => {
+      if (res) {
+        setAllTasks([]);
+        db.task.clear();
+      }
+    });
+  };
+
   return (
     <>
       <Pomodoro />
@@ -69,6 +86,7 @@ function App() {
         onTaskDelete={handleTaskDelete}
         onTaskComplete={handleTaskComplete}
         onTaskEdit={handleTaskEdit}
+        deleteAll={handleDeleteAll}
       />
       {/* <Footer></Footer> */}
     </>

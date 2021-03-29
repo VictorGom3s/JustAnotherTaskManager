@@ -10,14 +10,14 @@
 
 ## Features
 
-There's nothing much yet:
+There isn't much yet:
 
-- Create a task
+- Create tasks
+- Delete tasks
+- Edit tasks
 - Mark task as finished
-- Delete a task
-- Edit a task
 - Pomodoro Timer
-- Set a task priority
+- Set priorities for each task
 - Delete all tasks
 
 ## How to use
@@ -35,7 +35,7 @@ There's nothing much yet:
 ### Pomodoro Timer
 
 - There are five buttons near the Timer. The three below the timer let you start, stop and reset the timer, respectively.
-- Next to the timer, there are more two buttons. Use them to increase or decrease the time
+- Next to the timer, there are two more buttons. Use them to increase or decrease the time
 - In the upper-right corner you'll find a button leading you to the Wikipedia's Pomodoro Timer article, in case you want to learn more about this technique.
 
 ## To Do
@@ -43,6 +43,10 @@ There's nothing much yet:
 - [x] Notifications
 - [x] Pomodoro Timer
 - [x] Task priority
+- [ ] Change the sound alert when the sprint is over.
+- [ ] Automatically set the next sprint's duration.
+- [ ] Integrate with youtube or some music streaming app to include the option to listen to lo-fi songs while sprinting.
+- [ ] Make changes to improve general usability.
 
 ---
 
